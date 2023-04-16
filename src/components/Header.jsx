@@ -110,7 +110,7 @@ function Header(props) {
             ) : (
               <>
                 <Link
-                  to="#"
+                  to="/login"
                   className="d-block link-hover"
                 >
                   Sign in

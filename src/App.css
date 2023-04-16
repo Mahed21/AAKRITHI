@@ -760,3 +760,28 @@ section .profile-card{
     font-size: 16px;
   }
 }
+
+/* login */
+
+.login-parent{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  width:100%;
+  
+}
+.login-btn {
+  background: linear-gradient(to right, #1B53A8, #2F2E5D, #030A14);
+  border-radius: 20px; /* adjust the radius as needed */
+  color:white;
+}
+.login_with_google{
+  border-radius: 20px; /* adjust the radius as needed */
+  color:black;
+}
+.welcome_back{
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #1D59B3, #113366, #030A14);
+  color: white;
+
+}
