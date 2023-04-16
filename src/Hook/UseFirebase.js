@@ -23,8 +23,6 @@ import initializeAuthentication from "../Firebase/Firebase.initial";
         .then((result) => {
           // The signed-in user info.
           setUser(result.user);
-  
-          console.log(result.user);
         })
         .catch((error) => {
           setError(error.message);

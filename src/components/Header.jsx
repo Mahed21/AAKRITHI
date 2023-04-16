@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -11,8 +12,11 @@ import { faEnvelope, faMagnifyingGlass, faUserAlt, faClose } from '@fortawesome/
 
 import profileImg from '../assets/images/a1.jpg'
 import SearchBar from './SearchBar';
+import UseAuth from "../Context/UseAuth";
 
 function Header(props) {
+  const { user, Logout } = UseAuth();
+  console.log(user);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSearchShow, setIsSearchShow] = useState(false);
 
@@ -87,7 +91,7 @@ function Header(props) {
             <Form className="d-flex mt-0 mt-lg-0 pointer">
               <FontAwesomeIcon icon={!isSearchShow ? faMagnifyingGlass: faClose} onClick={handleSearchShow} />
             </Form>
-            {isLoggedIn ? (
+            {user.email ? (
               <>
                 <FontAwesomeIcon
                   className="d-block"
@@ -106,6 +110,9 @@ function Header(props) {
                     />
                   )}
                 </div>
+                <Link to="#" className="primary-btn-top">
+                  <button className="primary-btn d-block" onClick={Logout}>Log OUt</button>
+                </Link>
               </>
             ) : (
               <>
