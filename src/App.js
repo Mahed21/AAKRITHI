@@ -10,9 +10,11 @@ import Home from "./containers/Home";
 import ScrollToTop from './components/ScrollToTop';
 import Login from './Authentication/Login';
 import Register from './Authentication/Register';
+import AuthProvider from './Context/AuthProvider';
 
 function App() {
   return (
+    <AuthProvider>
     <Router>
       <ScrollToTop />
       <Routes>
@@ -24,7 +26,8 @@ function App() {
         <Route path="/login" element={<Login/>}  />
         <Route path="/register" element={ <Register/>}  />
       </Routes>
-    </Router>
+      </Router>
+      </AuthProvider>
   );
 }
 

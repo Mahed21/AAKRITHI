@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import google from "../assets/images/google.png";
+import UseAuth from "../Context/UseAuth";
 
 const Login = () => {
+  const { googleSignIn } = UseAuth();
   return (
     <div>
       <div className="row row-cols-lg-2 login-parent ">
@@ -36,7 +38,7 @@ const Login = () => {
                 className="mb-3 login-btn pt-2 pb-2 w-100"
               />
             </form>
-            <button className="mb-3 login_with_google pt-2 pb-2 w-100">
+            <button className="mb-3 login_with_google pt-2 pb-2 w-100" onClick={googleSignIn}>
               <img src={google} alt="" />
               <span className="ms-3 mt-2">Login with Google</span>
             </button>
