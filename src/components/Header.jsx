@@ -16,7 +16,7 @@ import UseAuth from "../Context/UseAuth";
 
 function Header(props) {
   const { user, Logout } = UseAuth();
-  console.log(user);
+ // console.log(user);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSearchShow, setIsSearchShow] = useState(false);
 
@@ -83,7 +83,7 @@ function Header(props) {
             >
               Store
             </Link>
-            <Link to="#" className="pb-1">
+            <Link to="/become_artist" className="pb-1">
               Become an Artist
             </Link>
           </Nav>

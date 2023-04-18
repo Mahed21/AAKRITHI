@@ -11,12 +11,15 @@ import ScrollToTop from './components/ScrollToTop';
 import Login from './Authentication/Login';
 import Register from './Authentication/Register';
 import AuthProvider from './Context/AuthProvider';
+import PractiseForm from './PractiseForm';
+import BecomeArtist from './components/BecomeArtist';
+import Header from './components/Header';
 
 function App() {
   return (
     <AuthProvider>
     <Router>
-      <ScrollToTop />
+        <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/explore" element={<Explore />}  />
@@ -25,6 +28,8 @@ function App() {
         <Route path="/profile/1" element={<Profile />}  />
         <Route path="/login" element={<Login/>}  />
         <Route path="/register" element={ <Register/>}  />
+        <Route path="/form" element={ <PractiseForm/>}  />
+        <Route path="/become_artist" element={ <BecomeArtist/>}  />
       </Routes>
       </Router>
       </AuthProvider>

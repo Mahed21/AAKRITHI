@@ -1,9 +1,11 @@
-const ProfileCard = ({img, name, prof}) => {
+const ProfileCard = (props) => {
+  const  {image,name, proof } = props.art;
+  console.log(name,proof);
   return (    
     <div className="profile-card d-flex flex-column">
-      <img src={img} alt="artist-profile" />
+      <img src={image} alt="" />
       <span className="name">{name}</span>
-      <span>{prof}</span>
+      <span>{proof}</span>
     </div>
   )
 }
