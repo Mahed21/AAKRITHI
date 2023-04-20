@@ -13,7 +13,12 @@ import Register from './Authentication/Register';
 import AuthProvider from './Context/AuthProvider';
 import PractiseForm from './PractiseForm';
 import BecomeArtist from './components/BecomeArtist';
-import Header from './components/Header';
+import AddBlog from './containers/AddBlog';
+import ExploreCardDetails from './components/ExploreCardDetails';
+import ManageBlog from './AdminDashboard/ManageBlog';
+
+
+
 
 function App() {
   return (
@@ -30,6 +35,11 @@ function App() {
         <Route path="/register" element={ <Register/>}  />
         <Route path="/form" element={ <PractiseForm/>}  />
         <Route path="/become_artist" element={ <BecomeArtist/>}  />
+        <Route path="/addBlog" element={ <AddBlog/>}  />
+        <Route path="/exploreCardDetails" element={ <ExploreCardDetails/>}  />
+        <Route path="/manageBlog" element={ <ManageBlog/>}  />
+      
+       
       </Routes>
       </Router>
       </AuthProvider>
