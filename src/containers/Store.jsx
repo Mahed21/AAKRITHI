@@ -14,112 +14,47 @@ const tabs = [
   {
     title: "GOLD SCULPTURE",
     key: "gold_sculpture",
-    profiles: [
-      { img: user1, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-      { img: user2, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-      { img: user3, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-    ],
-    art: [
-      { id: 1, img: NoImage, title: "Clay Pottery", price: 500 },
-      { id: 2, img: NoImage, title: "Clay Pottery", price: 500 },
-      { id: 3, img: NoImage, title: "Clay Pottery", price: 500 },
-    ],
   },
   {
     key: "stone_sculpture",
     title: "STONE SCULPTURE",
-    profiles: [
-      { img: user1, name: "ABC Dennis", prof: "ABC Artist", id: 1 },
-      { img: user2, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-      { img: user3, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-    ],
-    art: [
-      { id: 1, img: NoImage, title: "Stone Pottery", price: 500 },
-      { id: 2, img: NoImage, title: "Stone Pottery", price: 500 },
-      { id: 3, img: NoImage, title: "Stone Pottery", price: 500 },
-    ],
   },
   {
     key: "clay_sculpture",
     title: "CLAY SCULPTURE",
-    profiles: [
-      { img: user1, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-      { img: user2, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-      { img: user3, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-    ],
-    art: [
-      { id: 1, img: NoImage, title: "Clay Pottery", price: 500 },
-      { id: 2, img: NoImage, title: "Clay Pottery", price: 500 },
-      { id: 3, img: NoImage, title: "Clay Pottery", price: 500 },
-    ],
   },
   {
     key: "fabric_art",
     title: "FABRIC ART",
-    profiles: [
-      { img: user1, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-      { img: user2, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-      { img: user3, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-    ],
-    art: [
-      { id: 1, img: NoImage, title: "Fabric Pottery", price: 500 },
-      { id: 2, img: NoImage, title: "Fabric Pottery", price: 500 },
-      { id: 3, img: NoImage, title: "Fabric Pottery", price: 500 },
-    ],
   },
   {
     key: "bamboo_art",
     title: "BAMBOO ART",
-    profiles: [
-      { img: user1, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-      { img: user2, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-      { img: user3, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-    ],
-    art: [
-      { id: 1, img: NoImage, title: "Clay Pottery", price: 500 },
-      { id: 2, img: NoImage, title: "Clay Pottery", price: 500 },
-      { id: 3, img: NoImage, title: "Clay Pottery", price: 500 },
-    ],
   },
   {
     key: "fabric_art1",
     title: "FABRIC ART",
-    profiles: [
-      { img: user1, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-      { img: user2, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-      { img: user3, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-    ],
-    art: [
-      { id: 1, img: NoImage, title: "Clay Pottery", price: 500 },
-      { id: 2, img: NoImage, title: "Clay Pottery", price: 500 },
-      { id: 3, img: NoImage, title: "Clay Pottery", price: 500 },
-    ],
   },
   {
     key: "bamboo_art1",
     title: "BAMBOO ART",
-    profiles: [
-      { img: user1, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-      { img: user2, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-      { img: user3, name: "Jacob Dennis", prof: "ABC Artist", id: 1 },
-    ],
-    art: [
-      { id: 1, img: NoImage, title: "Clay Pottery", price: 500 },
-      { id: 2, img: NoImage, title: "Clay Pottery", price: 500 },
-      { id: 3, img: NoImage, title: "Clay Pottery", price: 500 },
-    ],
   },
 ];
 
 const Store = () => {
   const [data, setData] = useState([]);
   const [art, setArt] = useState([]);
+  const [activeTabKey, setActiveTabKey] = useState("gold_sculpture");
   useEffect(() => {
     fetch("http://localhost:5000/becomeArtist")
       .then((res) => res.json())
-      .then((data) => setData(data))
+      .then((data) => {
+        setData(data);
+        const filteredData = data.filter((datas) => datas.category.toLowerCase() === activeTabKey.toLowerCase());
+      setData(filteredData);
+      })
       .catch((error) => console.error(error));
-  }, []);
+  }, [activeTabKey]);
 
 
   useEffect(() => {
@@ -128,11 +63,14 @@ const Store = () => {
       .then((data) => setArt(data))
       .catch((error) => console.error(error));
   }, []);
+  const handleTabSelect = (key) => {
+    setActiveTabKey(key);
+  };
   
-
   return (
     <Layout>
-      <Tabs defaultActiveKey="gold_sculpture" className="mb-3 gap-4">
+      <Tabs defaultActiveKey="gold_sculpture" className="mb-3 gap-4" activeKey={activeTabKey}
+        onSelect={handleTabSelect}>
         {tabs &&
           tabs.map((tab) => (
             <Tab eventKey={tab.key} title={tab.title} id={tab.id}>

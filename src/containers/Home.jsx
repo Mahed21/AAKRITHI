@@ -23,6 +23,7 @@ import artist4 from "../assets/images/a4.jpg";
 import artist5 from "../assets/images/a5.jpg";
 import artist6 from "../assets/images/a6.jpg";
 import { useEffect, useState } from "react";
+import AllArt from "./AllArt";
 
 // data---------------------------
 const categories = [
@@ -54,10 +55,18 @@ const arts = [
 
 const Home = () => {
   const [data, setData] = useState([]);
+  const [allart, setAllArt] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/becomeArtist")
       .then((res) => res.json())
       .then((data) => setData(data))
+      .catch((error) => console.error(error));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/art")
+      .then((res) => res.json())
+      .then((data) => setAllArt(data))
       .catch((error) => console.error(error));
   }, []);
   return (
@@ -115,12 +124,12 @@ const Home = () => {
         <section className="pt-5">
           <h2 className="mb-4 mt-5">Arts</h2>
           <Row style={{ gap: "20px 0" }}>
-            {arts &&
-              arts.map((art) => (
-                <Col md={6} lg={4} key={art.id}>
-                  <ArtCard img={art.img} title={art.title} price={art.price} />
-                </Col>
-              ))}
+            {allart.length > 0 ?
+            allart.map((a) => (
+              <Col md={6} lg={4} key={a.id}>
+                <AllArt value={a} />
+              </Col>
+            )): <p>Loading data...</p>}
           </Row>
         </section>
       </section>
