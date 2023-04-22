@@ -7,10 +7,17 @@ import Footer from "./Footer";
 
 
 const BecomeArtist = () => {
-  const { user} = UseAuth();
-  const [email, setEmail] = useState({});
-  const [file, setFile] = useState(null);
+  const { user } = UseAuth();
   const [name, setName] = useState('');
+  const [country, setCountry] = useState('');
+  const [city, setCity] = useState('');
+  const [age, setAge] = useState('');
+  const [gender, setGender] = useState('');
+  const [category, setCategory] = useState('');
+  const [contact, setContact] = useState('');
+  const [description, setDescription] = useState('');
+  const [file, setFile] = useState(null);
+  
   const [proof, setProof] = useState('');
   let navigate = useNavigate();
 
@@ -38,11 +45,25 @@ const BecomeArtist = () => {
           formData.append('email', user.email);
           formData.append('name', name); 
           formData.append('proof', proof);
+          formData.append('country', country);
+          formData.append('city', city);
+          formData.append('age', age);
+          formData.append('gender', gender);
+          formData.append('category', category);
+          formData.append('contact', contact);
+          formData.append('description', description);
           const ArtistData = {
             image: img,
             email:  user.email,
             name: name,
             proof: proof,
+            country: country,
+            city: city,
+            age: age,
+            gender: gender,
+            category: category,
+            contact: contact,
+            description: description,
           };
           axios.post('http://localhost:5000/becomeArtist', ArtistData)
             .then(response => {
@@ -86,6 +107,84 @@ const BecomeArtist = () => {
                 />
               </div>
               <div className="form-group mb-3">
+                <label for="exampleInputEmail1">Country</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter Country Name"
+                  onChange={(e) =>setCountry(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-group mb-3">
+                <label for="exampleInputEmail1">Region</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter nearest city name"
+                  onChange={(e) =>setCity(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="form-group mb-3">
+                <label for="exampleInputEmail1">Age</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter Age"
+                  onChange={(e) =>setAge(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-group mb-3">
+                <label htmlFor="genderSelect">Gender</label>
+                <select
+                  className="form-control"
+                  id="genderSelect"
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                  required
+                >
+                  <option value="">Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div className="form-group mb-3">
+                <label for="exampleInputEmail1">Category of Art</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter Gender"
+                  onChange={(e) =>setCategory(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-group mb-3">
+                <label for="exampleInputEmail1">Contact Number</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter Contact number"
+                  onChange={(e) =>setContact(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="form-group mb-3">
                 <label for="exampleInputEmail1">proof</label>
                 <input
                   type="text"
@@ -96,6 +195,13 @@ const BecomeArtist = () => {
                   onChange={(e) =>setProof(e.target.value)}
                   required
                 />
+              </div>
+              <div className="form-group mb-3">
+                <textarea rows="2" className="w-100"
+                  placeholder="Enter Description"
+                  onChange={(e) => setDescription(e.target.value)}
+                  required></textarea>
+      
               </div>
               <div className="form-group mb-3">
               <input type="file" name="image" onChange={handleFileChange} />

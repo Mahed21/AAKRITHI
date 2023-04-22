@@ -16,6 +16,7 @@ import BecomeArtist from './components/BecomeArtist';
 import AddBlog from './containers/AddBlog';
 import ExploreCardDetails from './components/ExploreCardDetails';
 import ManageBlog from './AdminDashboard/ManageBlog';
+import AddArt from './components/AddArt';
 
 
 
@@ -30,7 +31,7 @@ function App() {
         <Route path="/explore" element={<Explore />}  />
         <Route path="/art/:id" element={<Art />}  />
         <Route path="/store" element={<Store />}  />
-        <Route path="/profile/1" element={<Profile />}  />
+        <Route path="/profile" element={<Profile />}  />
         <Route path="/login" element={<Login/>}  />
         <Route path="/register" element={ <Register/>}  />
         <Route path="/form" element={ <PractiseForm/>}  />
@@ -38,6 +39,7 @@ function App() {
         <Route path="/addBlog" element={ <AddBlog/>}  />
         <Route path="/exploreCardDetails" element={ <ExploreCardDetails/>}  />
         <Route path="/manageBlog" element={ <ManageBlog/>}  />
+        <Route path="/addArt" element={ <AddArt/>}  />
       
        
       </Routes>

@@ -2,15 +2,18 @@ import LikeComponent from './LikeComponent'
 import NoImage from '../assets/images/noImage.jpg'
 import { Link } from 'react-router-dom';
 
-const ArtCard = ({img, title, price, id}) => {
+const ArtCard = (props) => {
+
+  const { image, price, description, id, productName } = props.value || {};
+  //onsole.log(image, price, description);
   return (    
     <div className="art-card">
       <Link to={`/art/${id}`} style={{textDecoration: "none"}}>
-        <img src={img} alt="Art" />
+        <img src={image} alt="Art" />
       </Link>
       <div className="d-flex justify-content-between px-1 pt-3 align-items-center">
         <Link to={`/art/${id}`} style={{textDecoration: "none"}}>
-          <span className="title">{title}</span>
+          <span className="title">{productName}</span>
         </Link>
         <div>
           <LikeComponent showNum={false} />

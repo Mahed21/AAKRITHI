@@ -57,7 +57,7 @@ function Header(props) {
   const headerClasses = hasScrolled ? "nav-shadow flex-column" : "flex-column";
   // check is the user is artist or not
   useEffect(() => {
-    fetch("http://localhost:5000/becomeArtist")
+    fetch("http://localhost:5000/admin")
       .then((res) => res.json())
       .then((data) => {
         const fetchDatAdmin = data.filter(
@@ -66,12 +66,13 @@ function Header(props) {
         if (fetchDatAdmin.length > 0) {
           setCheckAdmin(true);
         }
+       
       })
       .catch((error) => console.error(error));
   }, [user.email]);
   //checck is the user is admin or not
   useEffect(() => {
-    fetch("http://localhost:5000/admin")
+    fetch("http://localhost:5000/becomeArtist")
       .then((res) => res.json())
       .then((data) => {
         const fetchData = data.filter((datas) => datas.email === user.email);
@@ -118,6 +119,13 @@ function Header(props) {
             {checkArtist ? (
               <Link to="/addBlog" className="d-block link-hover">
                 Add Blog
+              </Link>
+            ) : (
+              ""
+            )}
+             {checkArtist ? (
+              <Link to="/addArt" className="d-block link-hover">
+                Add Art
               </Link>
             ) : (
               ""
