@@ -26,6 +26,7 @@ function Header(props) {
   const [isSearchShow, setIsSearchShow] = useState(false);
   const [checkArtist, setCheckArtist] = useState(false);
   const [checkAdmin, setCheckAdmin] = useState(false);
+  const [userData, setUserData] = useState([]);
 
   // search
   const handleSearchShow = () => {
@@ -66,7 +67,6 @@ function Header(props) {
         if (fetchDatAdmin.length > 0) {
           setCheckAdmin(true);
         }
-       
       })
       .catch((error) => console.error(error));
   }, [user.email]);
@@ -82,6 +82,19 @@ function Header(props) {
       })
       .catch((error) => console.error(error));
   }, [user.email]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/user")
+      .then((res) => res.json())
+      .then((data) => {
+        const fetchUserData = data.filter(
+          (datas) => datas.email === user.email
+        );
+        setUserData(fetchUserData);
+      })
+      .catch((error) => console.error(error));
+  }, [user.email]);
+
   return (
     <Navbar bg="white" expand="lg" className={headerClasses}>
       <Container>
@@ -123,7 +136,7 @@ function Header(props) {
             ) : (
               ""
             )}
-             {checkArtist ? (
+            {checkArtist ? (
               <Link to="/addArt" className="d-block link-hover">
                 Add Art
               </Link>
@@ -137,19 +150,18 @@ function Header(props) {
             ) : (
               ""
             )}
-            
           </Nav>
 
           <div class="d-flex align-items-center mt-4 mt-lg-0 gap-4 nav-hr">
-            <Form className="d-flex mt-0 mt-lg-0 pointer">
+            {/* <Form className="d-flex mt-0 mt-lg-0 pointer">
               <FontAwesomeIcon
                 icon={!isSearchShow ? faMagnifyingGlass : faClose}
                 onClick={handleSearchShow}
               />
-            </Form>
+            </Form> */}
             {user.email ? (
               <>
-                <FontAwesomeIcon className="d-block" icon={faEnvelope} />
+                {/* <FontAwesomeIcon className="d-block" icon={faEnvelope} />
                 <div className="userAvatar">
                   {props?.imageUrl ? (
                     <img
@@ -162,7 +174,7 @@ function Header(props) {
                   ) : (
                     <FontAwesomeIcon className="d-block" icon={faUserAlt} />
                   )}
-                </div>
+                </div> */}
                 <Link to="#" className="primary-btn-top">
                   <button className="primary-btn d-block" onClick={Logout}>
                     Log OUt
@@ -178,6 +190,13 @@ function Header(props) {
                   <button className="primary-btn d-block">Join</button>
                 </Link>
               </>
+            )}
+            {userData[0] && userData[0].image ? (
+              <Link to={`/dashboard/${userData[0].id}`} className="pb-1">
+                <img src={userData[0].image} alt="" className="user_image" />
+              </Link>
+            ) : (
+              ""
             )}
           </div>
         </Navbar.Collapse>

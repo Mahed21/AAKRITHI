@@ -800,3 +800,49 @@ section .profile-card{
 .manage-blog{
   min-height: 100vh;
 }
+.user_profile{
+  background-color: #143E7C;
+  color:white;
+}
+.user_image{
+  width:40px;
+  height: 40px;
+  border-radius: 20px;
+}
+.dashboard_image{
+  width:100px;
+  height: 100px;
+  border-radius: 50px;
+}
+.address-dasboard-card{
+  background-color: white;
+  color:black;
+}
+.dashboard_edit_btn{
+  background-color:#143E7C;
+  color: white;
+}
+.dashboard_edit_link{
+  color: white;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  background-color: white;
+  color:blank;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.art_in_dashboard{
+  background: linear-gradient(to bottom, #1D59B3, #113366, #030A14);
+  color:white !important;
+}
+
+

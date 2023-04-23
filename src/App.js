@@ -17,6 +17,9 @@ import AddBlog from './containers/AddBlog';
 import ExploreCardDetails from './components/ExploreCardDetails';
 import ManageBlog from './AdminDashboard/ManageBlog';
 import AddArt from './components/AddArt';
+import Dashboard from './components/Dashboard';
+import EditArt from './components/EditArt';
+import EditUser from './components/EditUser';
 
 
 
@@ -40,6 +43,9 @@ function App() {
         <Route path="/exploreCardDetails" element={ <ExploreCardDetails/>}  />
         <Route path="/manageBlog" element={ <ManageBlog/>}  />
         <Route path="/addArt" element={ <AddArt/>}  />
+        <Route path="/dashboard/:id" element={ <Dashboard/>}  />
+        <Route path="/editArt" element={ <EditArt/>}  />
+        <Route path="/editUser" element={ <EditUser/>}  />
       
        
       </Routes>
