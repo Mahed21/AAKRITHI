@@ -55,10 +55,10 @@ const Profile = () => {
           <div className="gradiant-box description p-4 text-white">
             <p>{description}</p>
             <h5 className="text-center mt-5 mb-3">{contact}</h5>
-            {/* <div className='d-flex justify-content-center gap-4 contact-op align-items-center'>
-              <a href={profileData.email}><img src={whatsApp} alt="whatsapp" /></a>     
-              <a href={profileData.whatsApp}><img src={email} alt="whatsapp" /></a>   
-            </div> */}
+            <div className='d-flex justify-content-center gap-4 contact-op align-items-center'>
+              <a href="https://wa.me/${contact}" target="_blank"><img src={whatsApp} alt="whatsapp" /></a>     
+              <a href="mailto:${email}" target="_blank"><img src={gmail} alt="whatsapp" /></a>   
+            </div>
           </div>
         </Col>
       </Row>

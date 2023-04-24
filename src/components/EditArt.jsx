@@ -18,6 +18,7 @@ const EditArt = () => {
     email,
     file,
     price,
+    size,
   } = location.state;
 
   const [newFile, setFile] = useState(null);
@@ -25,6 +26,7 @@ const EditArt = () => {
   const [newAvailableQty, setAvailableQty] = useState(availableQty);
   const [newPrice, setPrice] = useState(price);
   const [newDescription, setDescription] = useState(description);
+  const [newSize, setNewSize] = useState(size);
   let navigate = useNavigate();
 
   function handleFileChange(event) {
@@ -51,6 +53,7 @@ const EditArt = () => {
               availableQty: newAvailableQty,
               description: newDescription,
               price: newPrice,
+              size: newSize,
             });
             navigate(`/dashboard/${id}`)
           } catch (error) {
@@ -125,6 +128,19 @@ const EditArt = () => {
                   placeholder="Enter price"
                   defaultValue={price}
                   onChange={(e) => setPrice(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-group mb-3">
+                <label for="exampleInputEmail1">Size</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter size"
+                  defaultValue={price}
+                  onChange={(e) => setNewSize(e.target.value)}
                   required
                 />
               </div>

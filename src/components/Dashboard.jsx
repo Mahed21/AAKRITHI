@@ -80,7 +80,7 @@ const Dashboard = () => {
         <h5 className="text-center mt-5 mb-5">Artist Management</h5>
         {/* <button class="w-25 me-2" style={{ backgroundColor: "#143E7C",color:"white" }}>Create New Art</button> */}
 
-        <div className="row row-cols-lg-3">
+        <div className="row row-cols-lg-3 mb-3">
           {allArtData.length > 0 ? (
             allArtData.map((a) => (
               <DisplayArtInDashboard

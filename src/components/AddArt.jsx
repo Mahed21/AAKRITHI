@@ -13,6 +13,7 @@ const AddArt = () => {
   const [availableQty, setAvailableQty] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const [size, setSize] = useState("");
   let navigate = useNavigate();
   function handleFileChange(event) {
     setFile(event.target.files[0]);
@@ -21,6 +22,7 @@ const AddArt = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("image", file);
+  
 
     const url = `https://api.imgbb.com/1/upload?key=6e348ee5df7e5ac0e70738f8b8b2f9f0`;
     fetch(url, {
@@ -38,13 +40,15 @@ const AddArt = () => {
           formData.append("availableQty", availableQty);
           formData.append("description", description);
           formData.append("price", price);
+          formData.append("size", size);
           const ArtistData = {
-              image: img,
-              email: user.email,
-              prodcutName: prodcutName,
-              availableQty: availableQty,
-              description: description,
-              price: price,
+            image: img,
+            email: user.email,
+            prodcutName: prodcutName,
+            availableQty: availableQty,
+            description: description,
+            price: price,
+            size: size,
           };
           axios
             .post("http://localhost:5000/art", ArtistData)
@@ -117,6 +121,18 @@ const AddArt = () => {
                   aria-describedby="emailHelp"
                   placeholder="Enter price"
                   onChange={(e) => setPrice(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-group mb-3">
+                <label for="exampleInputEmail1">size</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter size"
+                  onChange={(e) => setSize(e.target.value)}
                   required
                 />
               </div>

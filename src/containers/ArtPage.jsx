@@ -74,6 +74,7 @@ const Art = () => {
             {artDescription.description}
           </p>
           <p className='size'>Availabe Quantity: {artDescription.availableQty} </p>
+          <p className='size'>size: {artDescription.size} </p>
           <div className="d-flex align-items-center flex-wrap justify-content-between justify-content-lg-start">
             <p className='price'>Price: ₹{artDescription.price}</p> 
             <button className='btn-white'>Buy</button>

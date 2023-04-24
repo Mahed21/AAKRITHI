@@ -96,7 +96,7 @@ const Register = () => {
               <div className="form-group mb-3">
                 <label for="exampleInputEmail1">Phone Number</label>
                 <input
-                  type="number"
+                  type="text"
                   className="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
